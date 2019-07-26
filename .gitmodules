@@ -1,0 +1,8 @@
+[submodule "src/qdpxx"]
+	path = src/qdpxx
+	url = ../../usqcd-software/qdpxx.git
+	branch = devel
+[submodule "src/SyCLDslash"]
+	path = src/SyCLDslash
+	url = ../SyCLDslash.git
+	branch = devel
