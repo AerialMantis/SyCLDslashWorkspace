@@ -6,7 +6,7 @@
 source env.sh
 
 pushd ${SRCDIR}/qdpxx
-#autoreconf
+./autogen.sh
 popd
 
 pushd ${BUILDDIR}
@@ -29,6 +29,7 @@ ${SRCDIR}/qdpxx/configure \
 	--enable-largefile \
 	--enable-parallel-io \
         --enable-dml-output-buffering \
+	--with-libxml2=${INSTALLDIR}/libxml2 \
 	CXXFLAGS="${PK_CXXFLAGS}" \
 	CFLAGS="${PK_CFLAGS}" \
 	CXX="${PK_CXX}" \

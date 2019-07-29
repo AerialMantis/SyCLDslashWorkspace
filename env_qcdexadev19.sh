@@ -1,5 +1,6 @@
-. /usr/share/Modules/init/bash
-module load clang-9-sycl
+. /usr/share/modules/init/bash
+module load clang-9-intel-sycl
+module load cmake-3.13.4
 TOPDIR=`pwd`
 
 BUILDDIR=${TOPDIR}/build
@@ -11,7 +12,9 @@ export PATH=${OPENCL_SDK}/bin:$PATH
 export LD_LIBRARY_PATH=${OPENCL_SDK}/lib64:$LD_LIBRARY_PATH
 
 PK_CXX=clang++
-PK_CXXFLAGS=" -fsycl -O3"
+PK_CXXFLAGS=" -fsycl -O3 -fopenmp"
+PK_CC=clang
+PK_CFLAGS="-O3 -fopenmp"
 PK_LDFLAGS="-L${OPENCL_SDK}"
 PK_LIBS="-lOpenCL -lsycl"
 

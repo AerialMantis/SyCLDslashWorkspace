@@ -13,7 +13,7 @@ mkdir  ./build_sycl_dslash
 pushd ./build_sycl_dslash
 
 
-cmake ${SRCDIR}/SyCLDSlash \
+cmake ${SRCDIR}/SyCLDslash \
 	-G"Eclipse CDT4 - Unix Makefiles" \
 	-DCMAKE_INSTALL_PREFIX=${INSTALLDIR}/sycl_dslash \
 	-DCMAKE_CXX_COMPILER=${PK_CXX} \
