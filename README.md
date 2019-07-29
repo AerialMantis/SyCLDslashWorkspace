@@ -62,13 +62,18 @@ These files typically perform configuration by invoking `configure` (for
 be set here, e.g. for the Kokkos to be built for CUDA etc, or for qdpxx
 to use an installed libxml. There are some `build_sycl_dslash.sh` script examples
 
+CMake Options
+-------------
+
+* `MG_FORTRNALIKE_COMPLEX` -- Whether Vectorized Complex should be Fortran like (ON=RIRIRIRI) or not (OFF=RRRRRIIII)
 
 Running The Mini-App:
 =====================
 
 Once building is complete the executables will be in `build/build_sycl_dslash/tests`.
 
-... More here as it develops ...
+* `test_vectype_sycl` -- tests the workings of the vector type
+* `test_vnode_sycl`   -- tests the working of the Virtual Node Shift permutes
 
 
 Licensing and copyright
