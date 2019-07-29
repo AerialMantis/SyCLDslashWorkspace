@@ -1,10 +1,10 @@
-Kokkos WilsonDslash MiniApp Workspace
+SyCL WilsonDslash MiniApp Workspace
 =====================================
 
-This git repository contains the KokkosDslash
+This git repository contains the SyCLDslash
 package and its dependencies
 
-- `KokkosDslash` depends on `kokkos`, `googletest` and `qdp++`
+- `SyCLDslash` depends on `googletest` and `qdp++`
 - `qdp++` in turn depends on other USQCD libraries as
 submodules, and `libxml2`.
 
@@ -18,7 +18,7 @@ Checking out this repository
 ============================
 
 It is highly recommended that this library be checked out using
-the `--recursive` option to Git so that both `KokkosDslash` and
+the `--recursive` option to Git so that both `SyCLDslash` and
 `qdp++` (aka `qdpxx`) check out their required submodules
 
 Building the Mini Apps
@@ -43,13 +43,12 @@ modules, and set compiler / linker variables. In addition the file
 specifies locations of the source, build and install directories. 
 To adapt to a new system typically the following would need to be set:
 
-* `PK_CXX` - the C++ compiler
+* `PK_CXX` - the C++/SyCL compiler
 * `PK_CC`  - the C compiler
 * `PK_CXXFLAGS` and `PK_CFLAGS` -- compiler flags
 * `PK_LDFLAGS` and `PK_LIBS` -- linker flags
 
-QDP++ (`qdpxx`) and the reference `cpp_wilson_dslash` packages
-can be built with OpenMP threading. In order to use this feature
+QDP++ (`qdpxx`) be built with OpenMP threading. In order to use this feature
 one needs to pass `--enable-openmp` to their configuration. 
 This is set in the option `PK_OMP_ENABLE`. If you don't want openMP in these
 packages, set the variable to an empty string.
@@ -57,37 +56,20 @@ packages, set the variable to an empty string.
 The build_xxxx.sh files
 -----------------------
 
-The `build_xxxx.sh` files will build either `KokkosDslash` or its dependencies.
+The `build_xxxx.sh` files will build either `SyCLDslash` or its dependencies.
 These files typically perform configuration by invoking `configure` (for 
-`libxml2`, QDP++ (`qdpxx`) or CMake for `KokkosDslash`. Custom options can 
+`libxml2`, QDP++ (`qdpxx`) or CMake for `SyCLDslash`. Custom options can 
 be set here, e.g. for the Kokkos to be built for CUDA etc, or for qdpxx
-to use an installed libxml. There are some `build_kokkos_dslash.sh` script examples
-for OpenMP builds in:
+to use an installed libxml. There are some `build_sycl_dslash.sh` script examples
 
-* `build_kokkos_dslash_knl_omp.sh` -- KNL build with Kokkos using OpenMP and specialized AVX512
-* `build_kokkos_dslash_snb_omp.sh` -- CPU build (SandyBridge) using AVX2
-* FIXME: add a GPU build example
 
 Running The Mini-App:
 =====================
 
-Once building is complete the executables will be in `build/build_kokkos_dslash/tests`
-Two executables are of primary interest: `test_kokkos_vnode` and `test_kokkos_vperf`.
-The `test_kokkos_vnode` performs some unit testing and compares outputs against QDP++
-equivalents. 
+Once building is complete the executables will be in `build/build_sycl_dslash/tests`.
 
-The performance test is `test_kokkos_vperf` which will first go through an exhaustive
-tuning of block sizes, and then perform about 5-10 runs with the optimal block size.
+... More here as it develops ...
 
-For example, to run the test on an OpenMP build on an Intel Xeon Phi, Knights Landing
-system with 68 cores, 272 threads one would do in the `tests/` directory:
-
-```
-export OMP_NUM_THREADS=272
-export OMP_PROC_BIND=spread
-export OMP_PLACES=threads
-./test_kokkos_vperf
-```
 
 Licensing and copyright
 =======================

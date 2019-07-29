@@ -18,7 +18,7 @@ PK_CFLAGS="-O3 -fopenmp"
 PK_LDFLAGS="-L${OPENCL_SDK}"
 PK_LIBS="-lOpenCL -lsycl"
 
-OMPENABLE=""
+PK_OMP_ENABLE="--enable-openmp"
 MAKE="make -j 8"
 
 

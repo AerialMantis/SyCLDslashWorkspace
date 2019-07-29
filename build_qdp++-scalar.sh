@@ -5,9 +5,13 @@
 #################
 source env.sh
 
-pushd ${SRCDIR}/qdpxx
-./autogen.sh
-popd
+if [ ! -f ${SRCDIR}/qdpxx/configure ];
+then
+  pushd ${SRCDIR}/qdpxx
+  ./autogen.sh
+  popd
+
+fi
 
 pushd ${BUILDDIR}
 
@@ -30,6 +34,7 @@ ${SRCDIR}/qdpxx/configure \
 	--enable-parallel-io \
         --enable-dml-output-buffering \
 	--with-libxml2=${INSTALLDIR}/libxml2 \
+	${PK_OMP_ENABLE} \
 	CXXFLAGS="${PK_CXXFLAGS}" \
 	CFLAGS="${PK_CFLAGS}" \
 	CXX="${PK_CXX}" \
