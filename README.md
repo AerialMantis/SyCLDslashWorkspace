@@ -30,7 +30,7 @@ In the workspace are 3 main directories: `build`, `install` and
  dependencies. WARNING: `SyCLDslash` and `qdpxx` are Git Submodules,
 meaning they are checked out in what git calls `detached` mode. If you 
 want to develop and commit etc, you should go into e.g. `SyCLDslash`
-and check out an actual brang (e.g. `master` for `SyCLDslash` or 
+and check out an actual branch (e.g. `master` for `SyCLDslash` or 
 `devel` for QDP++)
 
 
@@ -46,7 +46,7 @@ Building the Mini Apps
 
 This is a single node mini-app which requires in essence just a 
 SyCL/C++ compiler in addition to the sources. A straighforward build
-
+involves:
 
 a) setting up the `env.sh` file with compiler specifics. Typically
 we keep separate env.sh files for various machines e.g. `env_qcdexadev19.sh`
@@ -84,17 +84,15 @@ The build_xxxx.sh files
 
 The `build_xxxx.sh` files will build either `SyCLDslash` or its dependencies.
 These files typically perform configuration by invoking `configure` (for 
-`libxml2`, QDP++ (`qdpxx`) or CMake for `SyCLDslash`) and then call `make` 
+`libxml2`, QDP++ (`qdpxx`)) or CMake (for `SyCLDslash`) and then call `make` 
 to build and install the dependencies. `SyCLDslash` is built, but not installed,
 and should be run from the `build` directory.
 
 Some options for SyCLDslash (`build_sycl_dslash.sh`) are as follows:
 
+* `-DQDPXX_DIR=<qdpxx_install_dir>/share` points to the `share` direcotry of a QDP++ installation which contains a `FindQDPXX.cmake` file.
 * `-DMG_FORTRANLIKE_COMPLEX=ON` enables (RIRIRIRI) storage for complex numbers in 
-vectors. Turning it to 'OFF' 
-*  `-DMG_USE_NEIGHBOR_TABLE=OFF` (if set to 'ON` would use a neighbour table taht is actualy a lookup 
- table. Currently this is set to OFF as that option is not currently supported, neighbor indices are
-explicitly computed.
+vectors. Turning it to 'OFF' specifies a more 'vector-like' complex number storage (RRRR...)(IIII...)
 * `-DMG_USE_LAYOUT_LEFT=OFF` ( if set to `ON` selects left index fastest indexing for View objects, if 
   set to `OFF` uses right fastest indexing, following Kokkos. )
  
