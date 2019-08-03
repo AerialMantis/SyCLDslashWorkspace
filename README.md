@@ -4,11 +4,12 @@ SyCLWilsonDslash MiniApp Workspace
 This git repository contains the SyCLDslash
 package and its dependencies
 
-- `SyCLDslash` depends on `googletest` and `qdp++`
-- `qdp++` in turn depends on other USQCD libraries as
-submodules, and `libxml2`.
+- [`SyCLDslash`](https://github.com/bjoo/SyCLDslash.git) depends on [`googletest`](https://github.com/google/googletest.git) and [QDP++](https://github.com/usqcd-software/qdpxx.git).
+- `qdp++` in turn depends on other [USQCD libraries]( https://usqcd-software.github.io ) as
+submodules, and [`libxml2`](https://github.com/gnome/libxml2).
 
-Since libxml2 has developed a lot we include an older source
+Since the head revision of libxml2 has developed a lot since we 
+wrote our build scripts we include an older source
 tree of libxml2 with this workspace that is known to compile
 with our scripts. Users may wish to use an installed libxml2
 on most systems one needs to install the developer package
