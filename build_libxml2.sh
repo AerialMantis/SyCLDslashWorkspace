@@ -3,7 +3,7 @@
 #################
 # BUILD QMP
 #################
-source env.sh
+source ./env.sh
 
 #pushd ${SRCDIR}/libxml2
 #autoreconf 

@@ -3,7 +3,7 @@
 #################
 # BUILD QMP
 #################
-source env.sh
+source ./env.sh
 
 if [ ! -f ${SRCDIR}/qdpxx/configure ];
 then
