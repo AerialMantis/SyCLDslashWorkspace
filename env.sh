@@ -1,1 +1,1 @@
-./env_qcdexadev19.sh
+./env_qcdexadev19_computecpp.sh

@@ -45,6 +45,7 @@ is not installed at this time, so the tests need to be run from the
 Building the Mini Apps
 ======================
 
+
 This is a single node mini-app which requires in essence just a 
 SyCL/C++ compiler in addition to the sources. A straighforward build
 involves:
@@ -96,7 +97,29 @@ Some options for SyCLDslash (`build_sycl_dslash.sh`) are as follows:
 vectors. Turning it to 'OFF' specifies a more 'vector-like' complex number storage (RRRR...)(IIII...)
 * `-DMG_USE_LAYOUT_LEFT=OFF` ( if set to `ON` selects left index fastest indexing for View objects, if 
   set to `OFF` uses right fastest indexing, following Kokkos. )
- 
+
+ComputeCPP builds
+-----------------
+
+
+The ComputeCPP C++ compiler can compile this min-app, however it had 
+some trouble compiling dependencies (e.g. libxml2). Further, in my 
+installation I had issues with OpenMP, notably that ComputeCPP couldn't
+find the OpenMP header files. As a result for ComputeCPP builds we have
+2 `env.sh` files:
+
+* One will be called `env.sh` and is for building the dependencies. These should be 
+set up with regular Clang or GCC/G++ builds and disabling OpenMP 
+(see for example `env_qcdexadev19_computecpp.sh`, which I symlink to `env.sh` for ComputeCPP builds)
+
+* One will be called `env_computecpp.sh` which has `compute++` and
+`compute` as the compilers. This is used to compute the final mini app. 
+(see for example `env_qcdexadev19_computecpp_sycl.sh` file which I symlink
+to `env_computecpp.sh` in ComputeCPP builds). 
+
+* Finally I specify options to select a ComputeCPP build in the
+`build_sycl_dslash_computecpp.sh` file
+
 
 
 Running The Mini-App:
