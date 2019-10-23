@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-source ./env.sh
+source ./env_computecpp.sh
 
 pushd ${BUILDDIR}
 
@@ -21,12 +21,18 @@ cmake ${SRCDIR}/SyCLDslash \
 	-DCMAKE_CXX_FLAGS="${PK_CXXFLAGS}" \
 	-DQDPXX_DIR="${INSTALLDIR}/qdp++-scalar/share" \
 	-DMG_FORTRANLIKE_COMPLEX=ON \
+	-DMG_USE_LAYOUT_LEFT=ON \
 	-DMG_DEBUG_INCLUDES=OFF \
 	-DMG_USE_NEIGHBOR_TABLE=OFF \
-	-DMG_USE_LAYOUT_LEFT=OFF \
         -DMG_USE_COMPUTE_CPP=ON \
-	-DComputeCpp_DIR=/home/bjoo/OpenCL/ComputeCpp-CE-1.0.4-Ubuntu-16.04-x86_64
-#${MAKE} VERBOSE=1
+	-DCMAKE_BUILD_TYPE=Release \
+	-DCOMPUTECPP_BITCODE=spirv64 \
+	-DComputeCpp_DIR=$COMPUTECPP_HOME \
+	-DOpenCL_INCLUDE_DIR=$POCL_INSTALL/include/ \
+	-DOpenCL_LIBRARY=$POCL_INSTALL/OCL_ICD_Loader/lib64/libOpenCL.so \
+	-DMG_USE_FIXED_ITERS=OFF
+
+${MAKE} VERBOSE=1
 
 popd
 
